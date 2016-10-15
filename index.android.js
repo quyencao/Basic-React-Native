@@ -1,4 +1,5 @@
 // Import some code we need
+import Moment from 'moment';
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -10,24 +11,25 @@ import {
 import DayItem from './src/day-item';
 
 
-const DAYS = ['Sunday', 'Monday', 'Tueday', 'Wednesday', 
-              'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
 // Create the react component on the screen
 export default class Weekdays extends Component {
     days() {
-        return DAYS.map((day) => {
-           // Call 7 times for each day
-           return <DayItem day={day} />;
-        });  
+        var dayItems = [];
+        
+        for(var i = 0; i < 7; i++) {
+            var day = Moment().add(i, 'days').format('dddd');
+            
+            dayItems.push(
+                <DayItem key={i} day={day} daysUntil={i} />
+            );
+        }
+        
+        return dayItems;
     }
     
     render() {
         return (
             <View style={styles.container}>
-                <Text>
-                    Days of the weeks:
-                </Text>
                 {this.days()}
             </View>
         )
