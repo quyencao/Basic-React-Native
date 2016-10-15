@@ -15,13 +15,20 @@ const DAYS = ['Sunday', 'Monday', 'Tueday', 'Wednesday',
 
 // Create the react component on the screen
 export default class Weekdays extends Component {
+    days() {
+        return DAYS.map((day) => {
+           // Call 7 times for each day
+           return <DayItem day={day} />;
+        });  
+    }
+    
     render() {
         return (
             <View style={styles.container}>
                 <Text>
                     Days of the weeks:
                 </Text>
-                <DayItem />
+                {this.days()}
             </View>
         )
     }
