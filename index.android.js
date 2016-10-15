@@ -17,6 +17,7 @@ export default class Weekdays extends Component {
         var dayItems = [];
         
         for(var i = 0; i < 7; i++) {
+            // Get today add i days format => Sunday, Monday...
             var day = Moment().add(i, 'days').format('dddd');
             
             dayItems.push(
